@@ -1,6 +1,6 @@
 # Sistema de Vale Palete
 
-O Sistema de Vale Palete é uma aplicação web desenvolvida em PHP para gerenciar a emissão, baixa e o histórico de vales de paletes, facilitando o controle logístico e financeiro relacionado a esses ativos.
+O Sistema de Vale Palete é uma aplicação web desenvolvida em PHP para gerenciar a emissão, a baixa e o histórico de vales de paletes, facilitando o controle logístico e financeiro relacionado a esses ativos.
 
 ## ✨ Funcionalidades
 
