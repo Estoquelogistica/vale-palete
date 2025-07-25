@@ -1,0 +1,19 @@
+# Composer - A pasta vendor é recriada com "composer install"
+/vendor/
+
+# Arquivos de ambiente - Nunca devem ir para o repositório
+.env
+.env.local
+.env.*.local
+
+# Arquivos de log
+/logs/
+*.log
+
+# Arquivos gerados pelo Sistema Operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de configuração de editores de código
+.vscode/
+.idea/
