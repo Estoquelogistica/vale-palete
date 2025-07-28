@@ -111,7 +111,7 @@ vale-palete/
 
 ### 5. 📄 Exemplo de Vale PDF
 *Demonstração do documento PDF gerado pelo sistema, com as duas vias.*
-![Exemplo de Vale em PDF](https://raw.githubusercontent.com/Estoquelogistica/vale-palete/main/screenshots/exemplo_pdf.png "Exemplo de Vale em PDF")
+![Exemplo de Vale em PDF](https://raw.githubusercontent.com/Estoquelogistica/vale-palete/main/screenshots/pdfvale.png "Exemplo de Vale em PDF")
 
 ---
 
