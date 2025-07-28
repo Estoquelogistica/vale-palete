@@ -117,14 +117,8 @@ vale-palete/
 
 ## 👨‍💻 Autor
 
-**[Seu Nome Aqui]**  
+**Saulo Sampaio**  
 Sistema desenvolvido para otimizar a gestão de ativos logísticos.
-
----
-
-## 🤝 Colaboradores
-
-**Gemini Code Assist** – Auxílio no desenvolvimento, refatoração de código e documentação.
 
 ---
 
