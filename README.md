@@ -77,41 +77,27 @@ vale-palete/
 
 ## 📸 Capturas de Tela
 
-### 1. 🔐 Autenticação
-*Interface de entrada do sistema, com a identidade visual da empresa.*
-![Tela de Login](screenshots/login.png "Tela de Login")
+> Adicione aqui as capturas de tela para ilustrar as funcionalidades do sistema.
 
-### 2. 🧾 Emissão e Baixa de Vales
-*Fluxo principal de operações do sistema.*
+### 1. 🔐 Tela de Login (`login.php`)
+*Interface de entrada do sistema, com a identidade visual da empresa.*  
+`(Adicionar print da tela de login aqui)`
 
-![Tela de Emissão de Vales](screenshots/emissao_vale.png "Tela de Emissão de Vales")
-*Tela de emissão de um novo vale.*
+### 2. 🧾 Aba de Emissão de Vales (`index.php`)
+*Formulário principal para gerar um novo vale, com busca de cliente e cálculo automático.*  
+`(Adicionar print da aba "Emitir Vale" aqui)`
 
-![Tabela de Vales em Aberto para Baixa](screenshots/baixa_tabela.png "Tabela de Vales em Aberto para Baixa")
-*Tabela com vales em aberto, pronta para registrar a devolução.*
+### 3. 📥 Aba de Baixa de Vales (`index.php`)
+*Tabela de vales em aberto, permitindo a busca e o registro de devoluções.*  
+`(Adicionar print da aba "Baixar Vale" com o modal aberto aqui)`
 
-![Modal de Baixa de Vale](screenshots/baixa_modal.png "Modal de Baixa de Vale")
-*Modal para dar baixa parcial ou total em um vale.*
-
-### 3. 📜 Histórico e Relatórios
-*Visualização completa de todos os vales, com filtros e opções de exportação.*
-![Tela de Histórico](screenshots/historico.png "Tela de Histórico")
-
-### 4. ⚙️ Cadastros e Configurações
-*Telas de apoio para gerenciamento de clientes, paletes e configurações do sistema.*
-
-![Tela de Cadastro de Clientes](screenshots/cadastro_clientes.png "Tela de Cadastro de Clientes")
-*Gerenciamento da base de clientes.*
-
-![Tela de Cadastro de Tipos de Palete](screenshots/cadastro_paletes.png "Tela de Cadastro de Tipos de Palete")
-*Definição dos tipos de paletes e seus respectivos valores.*
-
-![Tela de Configurações](screenshots/configuracoes.png "Tela de Configurações")
-*Ajuste de parâmetros do sistema, como o próximo número de vale.*
+### 4. 📜 Aba de Histórico (`index.php`)
+*Visualização completa de todos os vales, com filtros e opções de exportação.*  
+`(Adicionar print da aba "Histórico" aqui)`
 
 ### 5. 📄 Exemplo de Vale PDF
-*Demonstração do documento PDF gerado pelo sistema, com as duas vias.*
-![Exemplo de Vale em PDF](screenshots/exemplo_pdf.png "Exemplo de Vale em PDF")
+*Demonstração do documento PDF gerado pelo sistema, com as duas vias.*  
+`(Adicionar print do PDF gerado aqui)`
 
 ---
 
