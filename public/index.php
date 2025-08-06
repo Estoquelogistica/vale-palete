@@ -1,4 +1,6 @@
 <?php
+// Define um nome de sessão exclusivo para este sistema
+session_name('VALE_PALETE_SESSID');
 session_start();
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");

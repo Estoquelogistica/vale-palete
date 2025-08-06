@@ -1,4 +1,6 @@
 <?php
+// Define um nome de sessão exclusivo para este sistema
+session_name('VALE_PALETE_SESSID');
 session_start();
 
 // Conecta-se ao banco de dados 'intranet' para verificar os usuários
@@ -8,7 +10,9 @@ if (isset($_SESSION['user_id'])) {
     header("Location: index.php");
     exit();
 }
-$conn = new mysqli("localhost", "root", "", "intranet");
+
+// ALTERADO: Conexão agora aponta para o banco de dados 'vale_palete'
+$conn = new mysqli("localhost", "root", "", "vale_palete");
 if ($conn->connect_error) {
     // Em um ambiente de produção, seria melhor logar o erro do que exibi-lo.
     die("Falha na conexão com o banco de dados. Por favor, contate o administrador.");
@@ -22,25 +26,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        // Usando "Prepared Statements" para previnir Injeção de SQL
-        // Ajustado para corresponder à sua tabela: id, username, password, role
-        $stmt = $conn->prepare("SELECT id, username, password, role FROM users WHERE username = ? LIMIT 1");
+        // ALTERADO: A consulta agora busca na nova tabela com as colunas corretas (usuario, senha, nome, permissao)
+        $stmt = $conn->prepare("SELECT id, nome, usuario, senha, permissao FROM users WHERE usuario = ? LIMIT 1");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
 
         if ($user = $result->fetch_assoc()) {
-            // Verifica se a senha corresponde à hash salva no banco
-            if (password_verify($password, $user['password'])) {
+            // ALTERADO: Verifica a senha na coluna 'senha'
+            if (password_verify($password, $user['senha'])) {
                 // Regenera o ID da sessão para segurança
                 session_regenerate_id(true);
                 
-                // Salva as informações do usuário na sessão
+                // ALTERADO: Salva as informações do usuário na sessão com base nas colunas da nova tabela
                 $_SESSION['user_id'] = $user['id'];
-                $_SESSION['username'] = $user['username'];
-                // Como não há 'nome_completo', usaremos o 'username' para exibição.
-                $_SESSION['nome_completo'] = $user['username'];
-                $_SESSION['role'] = $user['role']; // Adicionado para futuras permissões
+                $_SESSION['usuario'] = $user['usuario'];
+                // Agora temos a coluna 'nome' para o nome completo
+                $_SESSION['nome_completo'] = $user['nome'];
+                $_SESSION['permissao'] = $user['permissao'];
                 
                 // Redireciona para a página principal do sistema
                 header("Location: index.php");
