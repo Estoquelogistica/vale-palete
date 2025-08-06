@@ -2,6 +2,19 @@
 // Define um nome de sessão exclusivo para este sistema
 session_name('VALE_PALETE_SESSID');
 session_start();
+
+// --- Logout por inatividade (Server-side) ---
+$inactive_seconds = 300; // 5 minutos (5 * 60)
+if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity']) > $inactive_seconds) {
+    // A última atividade foi há mais de 5 minutos, destrói a sessão
+    session_unset();
+    session_destroy();
+    header("Location: login.php?reason=inactive"); // Redireciona para o login
+    exit();
+}
+$_SESSION['last_activity'] = time(); // Atualiza o timestamp da última atividade
+// --- Fim do controle de inatividade ---
+
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
@@ -533,5 +546,29 @@ $nome_completo_usuario = $_SESSION['nome_completo'] ?? 'Usuário';
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
   <script src="script.js"></script>
+  <script>
+    // --- Logout por inatividade (Client-side) ---
+    (function() {
+        const inactivityTime = 5 * 60 * 1000; // 5 minutos em milissegundos
+        let logoutTimer;
+
+        function resetTimer() {
+            clearTimeout(logoutTimer);
+            logoutTimer = setTimeout(logout, inactivityTime);
+        }
+
+        function logout() {
+            // Redireciona para a página de logout para encerrar a sessão de forma segura
+            window.location.href = 'logout.php';
+        }
+
+        // Eventos que indicam atividade do usuário e reiniciam o timer
+        window.addEventListener('load', resetTimer);
+        document.addEventListener('mousemove', resetTimer);
+        document.addEventListener('keydown', resetTimer);
+        document.addEventListener('click', resetTimer);
+        document.addEventListener('scroll', resetTimer);
+    })();
+  </script>
   </body>
 </html>

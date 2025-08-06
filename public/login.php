@@ -19,6 +19,12 @@ if ($conn->connect_error) {
 }
 
 $error = '';
+$info = '';
+if (isset($_GET['reason']) && $_GET['reason'] === 'inactive') {
+    // Mensagem para quando o logout for por inatividade
+    $info = "Você foi desconectado por inatividade.";
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($_POST['username']) || empty($_POST['password'])) {
         $error = "Por favor, preencha todos os campos.";
@@ -44,6 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Agora temos a coluna 'nome' para o nome completo
                 $_SESSION['nome_completo'] = $user['nome'];
                 $_SESSION['permissao'] = $user['permissao'];
+                
+                // Define o timestamp inicial da atividade para controle de inatividade
+                $_SESSION['last_activity'] = time();
                 
                 // Redireciona para a página principal do sistema
                 header("Location: index.php");
@@ -147,6 +156,9 @@ $conn->close(); // Fecha a conexão
     <div class="login-container">
         <img src="images/logo.svg" alt="Logo">
         <h2>Acessar Sistema</h2>
+        <?php if (!empty($info)): ?>
+            <div style="color: #0052a5; background-color: #e7f3fe; border: 1px solid #b6d4fe; padding: 10px; border-radius: 8px; margin-bottom: 15px;"><?php echo htmlspecialchars($info, ENT_QUOTES, 'UTF-8'); ?></div>
+        <?php endif; ?>
         <?php if (!empty($error)): ?>
             <div style="color: red; margin-bottom: 10px;"><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></div>
         <?php endif; ?>
